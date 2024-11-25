@@ -28,17 +28,24 @@ def get_pushed_articles(ghb, sha) -> List[str]:
 
 
 @workflow.action
-def action(github_event_before: str, github_sha: str) -> None:
-    AN.notice(f"GitHub Event Before: {github_event_before}, SHA: {github_sha}")
-    article_path: str = get_pushed_articles(github_event_before, github_sha)[0]
+def action() -> None:
+    # AN.notice(f"GitHub Event Before: {github_event_before}, SHA: {github_sha}")
+    result = subprocess.run(
+        ["git", "log"],
+        # git diff-tree --no-commit-id --name-only -r
+        text=True,  # Ensure output is in string format
+        capture_output=True,
+        check=True,  # Raise an error if the command fails
+    )
+    # article_path: str = get_pushed_articles(github_event_before, github_sha)[0]
 
-    with open(article_path, "r") as article:
-        content: str = article.read()
+    # with open(article_path, "r") as article:
+    #     content: str = article.read()
 
     workflow.write(
         WorkflowContext(
             {
-                "content": content,
+                "content": str(result),
             }
         )
     )
