@@ -26,3 +26,25 @@ inputs:
 
   github_event_after:
     default: ${{ github.event.after }}
+
+  method:
+    description: LLM tools ("summarizeArticle", "concludeArticle")
+    required: true
+
+  path:
+    default: transformed_articles/
+
+  translate_to:
+    description: Output translation lagnauge.
+
+  temperature:
+    description: A number between 0.0 and 2.0 that controls the sampling temperature.
+    default: 0.2
+
+  hypernode_endpoint:
+    description: The Hypernode API endpoint
+    required: true
+
+  hypernode_api_token:
+    description: The Hypernode API token
+    required: true
