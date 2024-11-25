@@ -13,7 +13,8 @@ def get_pushed_articles(ghb, sha) -> List[str]:
         # Run the Git command and capture the output
         AN.notice("Getting the published/modified article.")
         result = subprocess.run(
-            ["git", "--no-pager", "diff", "--name-only", sha, ghb],
+            ["git", "diff-tree", "--no-commit-id", "--name-onlt", "-r", sha],
+            # git diff-tree --no-commit-id --name-only -r
             text=True,  # Ensure output is in string format
             capture_output=True,
             check=True,  # Raise an error if the command fails
