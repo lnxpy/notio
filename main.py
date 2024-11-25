@@ -12,6 +12,7 @@ def get_pushed_articles(geb, gea) -> List[str]:
     try:
         # Run the Git command and capture the output
         AN.notice("Getting the published/modified article.")
+        subprocess.call(["git", "config", "--global", "--add", "safe.directory", "'*'"])
         result = subprocess.run(
             ["git", "diff-tree", "--no-commit-id", "--name-only", geb, gea],
             text=True,  # Ensure output is in string format
