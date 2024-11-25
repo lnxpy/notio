@@ -1,0 +1,22 @@
+name: Greeting Action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Running the action
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: Running Hello-world
+        id: hello_world
+        uses: ./
+
+      - name: Output
+        run: echo ${{ steps.hello_world.outputs.content }}
