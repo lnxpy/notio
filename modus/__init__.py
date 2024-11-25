@@ -21,6 +21,7 @@ def ask_modus(
 
     response = requests.post(endpoint, headers=headers, json={"query": new_query})
 
+    print(new_query)
     print(response.text)
     print(response.text)
     print(response.text)
