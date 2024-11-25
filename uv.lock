@@ -205,6 +205,7 @@ version = "0.0.1"
 source = { virtual = "." }
 dependencies = [
     { name = "pyaction" },
+    { name = "requests" },
 ]
 
 [package.optional-dependencies]
@@ -216,6 +217,7 @@ cli = [
 requires-dist = [
     { name = "pyaction", specifier = "==0.8.2" },
     { name = "pyaction", extras = ["cli"], marker = "extra == 'cli'", specifier = "==0.8.2" },
+    { name = "requests", specifier = ">=2.32.3" },
 ]
 
 [[package]]
