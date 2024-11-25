@@ -36,15 +36,12 @@ inputs:
 
   translate_to:
     description: Output translation lagnauge.
+    default: English
 
-  temperature:
-    description: A number between 0.0 and 2.0 that controls the sampling temperature.
-    default: 0.2
-
-  hypernode_endpoint:
-    description: The Hypernode API endpoint
+  hypermode_endpoint:
+    description: The Hypermode API endpoint
     required: true
 
-  hypernode_api_token:
-    description: The Hypernode API token
+  hypermode_api_token:
+    description: The Hypermode API token
     required: true

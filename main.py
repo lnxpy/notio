@@ -41,8 +41,8 @@ def action(
     method: str,
     path: str,
     translate_to: str,
-    hypernode_endpoint: str,
-    hypernode_api_token: str,
+    hypermode_endpoint: str,
+    hypermode_api_token: str,
 ) -> None:
     if method not in ALLOWED_METHODS.keys():
         AN.error(
@@ -59,8 +59,8 @@ def action(
         content,
         translate_to,
         ALLOWED_METHODS[method],
-        hypernode_endpoint,
-        hypernode_api_token,
+        hypermode_endpoint,
+        hypermode_api_token,
     )
 
     write_path = Path(get_or_create_path(path)).joinpath(article)
