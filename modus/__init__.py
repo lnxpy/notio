@@ -2,7 +2,7 @@ from string import Template
 
 import requests
 
-query = Template('query $name {$method(content: "$content", language: "$language")}')
+query = Template('query $name {$method(content: $content, language: "$language")}')
 
 
 def ask_modus(
@@ -15,16 +15,11 @@ def ask_modus(
     new_query = query.safe_substitute(
         name=method[0],
         method=method[1],
-        content=repr(content),
+        content=content,
         language=language,
     )
 
     response = requests.post(endpoint, headers=headers, json={"query": new_query})
-
-    print(new_query)
-    print(response.text)
-    print(response.text)
-    print(response.text)
 
     data = response.json()
     return data["data"][method[1]]
