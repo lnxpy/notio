@@ -52,7 +52,7 @@ def action(
 
     article: str = get_pushed_articles(github_event_before, github_event_after)[0]
 
-    with open(article, "r", encoding="utf-8") as file:
+    with open(article, "r") as file:
         content = file.read()
 
     result = ask_modus(
