@@ -8,13 +8,12 @@ from pyaction.workflow.stream import WorkflowContext
 workflow = PyAction()
 
 
-def get_pushed_articles(ghb, sha) -> List[str]:
+def get_pushed_articles(geb, gea) -> List[str]:
     try:
         # Run the Git command and capture the output
         AN.notice("Getting the published/modified article.")
         result = subprocess.run(
-            ["git", "diff-tree", "--no-commit-id", "--name-onlt", "-r", sha],
-            # git diff-tree --no-commit-id --name-only -r
+            ["git", "diff-tree", "--no-commit-id", "--name-only", geb, gea],
             text=True,  # Ensure output is in string format
             capture_output=True,
             check=True,  # Raise an error if the command fails
@@ -28,24 +27,16 @@ def get_pushed_articles(ghb, sha) -> List[str]:
 
 
 @workflow.action
-def action() -> None:
-    # AN.notice(f"GitHub Event Before: {github_event_before}, SHA: {github_sha}")
-    result = subprocess.run(
-        ["git", "log"],
-        # git diff-tree --no-commit-id --name-only -r
-        text=True,  # Ensure output is in string format
-        capture_output=True,
-        check=True,  # Raise an error if the command fails
-    )
-    # article_path: str = get_pushed_articles(github_event_before, github_sha)[0]
+def action(github_event_before: str, github_event_after: str) -> None:
+    article_path: str = get_pushed_articles(github_event_before, github_event_after)[0]
 
-    # with open(article_path, "r") as article:
-    #     content: str = article.read()
+    with open(article_path, "r") as article:
+        content: str = article.read()
 
     workflow.write(
         WorkflowContext(
             {
-                "content": str(result),
+                "content": content,
             }
         )
     )
