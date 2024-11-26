@@ -28,15 +28,23 @@ inputs:
     default: ${{ github.event.after }}
 
   method:
-    description: LLM tools ("summarizeArticle", "concludeArticle")
+    description: LLM tools ("abstract-article", "simplify-article", "translate-article", "generate-questions")
     required: true
 
   path:
     default: transformed_articles/
 
   translate_to:
-    description: Output translation lagnauge.
+    description: Output translation lagnauge (used with "translate-article" method)
     default: English
+
+  question_limit:
+    description: The amount of questions (used with "generate-questions" method)
+    default: 20
+
+  include_answers:
+    description: Whether including the question answers (used with "generate-questions" method)
+    default: true
 
   hypermode_endpoint:
     description: The Hypermode API endpoint
