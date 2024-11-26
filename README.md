@@ -1,12 +1,15 @@
 ![banner](media/notio.svg)
 
 ## NotioAI
-Notio is a CI automated LLM toolkit that gets triggered when a Hashnode article gets published/modified. With the help of this pipeline, you can..
+Notio is a CI automated LLM toolkit that gets triggered when a [Hashnode](https://hashnode.com) article gets published/modified. With the help of this pipeline, you can..
 
 - Share the translated version of a newly published Hashnode article.
 - Generate questions about the article and push it to GitHub.
 - Create an abstraction from the article.
 - Simplify the article and share it in a Markdown file on GitHub.
+
+> [!TIP]
+> Read [this article](https://blog.imsadra.me/notio-hashnode-post-publication-llm-toolkit) about the development process and full potential of this CI action.
 
 ### Setup
 Follow these steps to enable Notio for your Hashnode blog.
@@ -15,10 +18,10 @@ Follow these steps to enable Notio for your Hashnode blog.
 On your Hashnode dashboard, enable the backup feature. This way, Hashnode will push any change you make on your articles.
 
 #### Deploy a personal Hypermode instance
-Clone [this Hypermode sample instance](https://github.com/lnxpy/modus-model) and [deploy](https://docs.hypermode.com/deploy) a personal instance for yourself. Then in the dashboard, grab the endpoint URL and take the API Token from the settings.
+Clone [this Hypermode sample instance](http://github.com/lnxpy/notio-model) and [deploy](https://docs.hypermode.com/deploy) a personal instance for yourself. Then in the dashboard, grab the endpoint URL and take the API Token from the settings.
 
 #### Create secrets
-When Hashnode backup is enabled, you can see there is a repository created on your GitHub account called `hashnode`. Navigate to that repository, go to "*Settings*" > "*Secrets and variables*" > "*Actions*" and create the following secrets.
+When Hashnode backup is enabled, you can see there is a repository created on your GitHub account called `hashnode`. Navigate to that repository, go to "**Settings**" > "**Secrets and variables**" > "**Actions**" and create the following secrets.
 
 - `HYPERMODE_ENDPOINT_URL`: The endpoint URL taken from the Hypermode dashboard.
 - `HYPERMODE_API_TOKEN`: The API token taken from the Hypermode dashboard settings.
