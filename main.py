@@ -81,6 +81,9 @@ def action(
         raise SystemExit(1)
 
     write_path = Path(get_or_create_path(path)).joinpath(article)
+    
+    AN.notice(f"got the article: {article}")
+    AN.notice(f"writing the article in: {write_path}")
 
     with open(write_path, "w") as file:
         file.write(result)
