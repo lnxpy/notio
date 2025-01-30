@@ -43,8 +43,6 @@ def get_or_create_path(path: str) -> str:
 
 @workflow.action
 def action(
-    github_event_before: str,
-    github_event_after: str,
     method: str,
     translate_to: str,
     question_limit: int,
@@ -53,11 +51,8 @@ def action(
     hypermode_endpoint: str,
     hypermode_api_token: str,
 ) -> None:
-    article: str = get_pushed_articles(github_event_before, github_event_after)[0]
+    article: str = get_pushed_articles()[0]
 
-    AN.notice(f"got the article: {article}")
-    AN.notice(str(get_pushed_articles(github_event_before, github_event_after)))
-    
     with open(article, "r") as file:
         content = json.dumps(file.read().strip())
 
@@ -83,7 +78,7 @@ def action(
         )
         raise SystemExit(1)
 
-    write_path = Path(get_or_create_path(path)).joinpath(article)
+    write_path = Path(get_or_create_path(path)).joinpath(os.path.basename(article))
 
     with open(write_path, "w") as file:
         file.write(result)

@@ -4,7 +4,7 @@ from typing import List
 from pyaction.workflow import annotations as AN
 
 
-def get_pushed_articles(github_event_before, github_event_after) -> List[str]:
+def get_pushed_articles() -> List[str]:
     try:
         # Run the Git command and capture the output
         AN.notice("Getting the published/modified article.")
@@ -19,14 +19,7 @@ def get_pushed_articles(github_event_before, github_event_after) -> List[str]:
             ]
         )
         result = subprocess.run(
-            [
-                "git",
-                "diff-tree",
-                "--no-commit-id",
-                "--name-only",
-                github_event_before,
-                github_event_after,
-            ],
+            ["git", "diff", "--name-only", "HEAD^1", "HEAD"],
             text=True,  # Ensure output is in string format
             capture_output=True,
             check=True,  # Raise an error if the command fails

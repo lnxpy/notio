@@ -55,7 +55,7 @@ Now, use one of the following steps to configure your workflow and satisfy your 
 > Grabs the article and translates it into another language.
 ```yml
 - name: Running Notio
-  uses: lnxpy/notio@main
+  uses: lnxpy/notio@v1
   with:
     method: translate-article
     path: dutch/
@@ -68,7 +68,7 @@ Now, use one of the following steps to configure your workflow and satisfy your 
 > Grabs the article and generates questions about the article.
 ```yml
 - name: Running Notio
-  uses: lnxpy/notio@main
+  uses: lnxpy/notio@v1
   with:
     method: generate-questions
     path: questions/
@@ -83,7 +83,7 @@ Now, use one of the following steps to configure your workflow and satisfy your 
 
 ```yml
 - name: Running Notio
-  uses: lnxpy/notio@main
+  uses: lnxpy/notio@v1
   with:
     method: abstract-article
     path: abstractions/
@@ -96,7 +96,7 @@ Now, use one of the following steps to configure your workflow and satisfy your 
 
 ```yml
 - name: Running Notio
-  uses: lnxpy/notio@main
+  uses: lnxpy/notio@v1
   with:
     method: simplify-article
     path: simplified_articles/

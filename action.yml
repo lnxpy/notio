@@ -21,12 +21,6 @@ inputs:
     default: ${{ github.repository }}
     required: true
 
-  github_event_before:
-    default: ${{ github.event.before }}
-
-  github_event_after:
-    default: ${{ github.event.after }}
-
   method:
     description: LLM tools ("abstract-article", "simplify-article", "translate-article", "generate-questions")
     required: true
