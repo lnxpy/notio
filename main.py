@@ -55,6 +55,9 @@ def action(
 ) -> None:
     article: str = get_pushed_articles(github_event_before, github_event_after)[0]
 
+    AN.notice(f"got the article: {article}")
+    AN.notice(str(get_pushed_articles(github_event_before, github_event_after)))
+    
     with open(article, "r") as file:
         content = json.dumps(file.read().strip())
 
@@ -81,9 +84,6 @@ def action(
         raise SystemExit(1)
 
     write_path = Path(get_or_create_path(path)).joinpath(article)
-    
-    AN.notice(f"got the article: {article}")
-    AN.notice(f"writing the article in: {write_path}")
 
     with open(write_path, "w") as file:
         file.write(result)
